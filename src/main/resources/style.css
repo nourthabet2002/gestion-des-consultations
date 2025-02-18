@@ -1,0 +1,66 @@
+/* === General Styling === */
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-font-family: "Arial", sans-serif;
+}
+
+/* === Labels === */
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+}
+
+/* === Text Fields === */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+    -fx-padding: 6px;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused {
+    -fx-border-color: #0078d7;
+    -fx-effect: dropshadow(gaussian, rgba(0, 120, 215, 0.3), 5, 0, 0, 2);
+}
+
+/* === Buttons === */
+.button {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-padding: 6px 10px;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #005a9e;
+}
+
+.button:pressed {
+    -fx-background-color: #004080;
+}
+
+/* === List View === */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+}
+
+.list-view .list-cell {
+    -fx-padding: 6px;
+    -fx-font-size: 13px;
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #0078d7;
+    -fx-text-fill: white;
+}
