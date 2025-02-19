@@ -49,6 +49,7 @@ public class ConsultationController implements Initializable {
         consultation.setDateConsultation(Date.valueOf(dateConsultation.getValue()));
         consultation.setPatient(comboPatient.getSelectionModel().getSelectedItem());
         CabinetService.addConsultation(consultation);
+        loadConsultation();
     }
     public void delConsultation() {
         Consultation consultation = tableConsultation.getSelectionModel().getSelectedItem();
