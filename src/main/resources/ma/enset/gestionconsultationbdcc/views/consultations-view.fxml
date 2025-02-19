@@ -42,7 +42,7 @@
             <HBox prefHeight="63.0" prefWidth="600.0">
                <children>
                   <Button mnemonicParsing="false" text="Ajouter"  onAction="#addConsultation"/>
-                  <Button mnemonicParsing="false" text="Supprimer" />
+                  <Button mnemonicParsing="false" text="Supprimer"  onAction="#delConsultation"/>
                </children>
             </HBox>
          </children>

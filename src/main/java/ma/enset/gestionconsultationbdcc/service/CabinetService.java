@@ -87,7 +87,11 @@ public class CabinetService implements ICabinetService {
 
     @Override
     public void deleteConsultation(Consultation consultation) {
-
+        try {
+            consultationDao.delete(consultation);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

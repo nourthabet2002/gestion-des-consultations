@@ -27,10 +27,7 @@ public class ConsultationDao implements IConsultationDao {
         pstm.executeUpdate();
     }
 
-    @Override
-    public void delete(Consultation consultation) throws SQLException {
 
-    }
 
     @Override
     public void update(Consultation consultation) throws SQLException {
@@ -45,7 +42,8 @@ public class ConsultationDao implements IConsultationDao {
         List<Consultation> consultations=new ArrayList<>();
         while(rs.next()){
             Consultation consultation=new Consultation();
-            consultation.setId(rs.getLong("ID_PATIENT"));
+            consultation.setId(rs.getLong("ID_CONSULTATION"));
+
             consultation.setDateConsultation(rs.getDate("DATE_CONSULTATION"));
             consultation.setDescription(rs.getString("DESCRIPITION"));
             long patientId = rs.getLong("ID_PATIENT");
@@ -62,6 +60,13 @@ public class ConsultationDao implements IConsultationDao {
     @Override
     public Consultation findById(Long id) throws SQLException {
         return null;
+    }
+
+    public void delete(Consultation consultation) throws SQLException {
+        Connection connection=DBConnection.getConnection();
+        PreparedStatement pstm=connection.prepareStatement("DELETE FROM CONSULTATIONS  WHERE ID_CONSULTATION=?");
+        pstm.setLong(1,consultation.getId());
+        pstm.executeUpdate();
     }
 
 

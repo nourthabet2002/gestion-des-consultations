@@ -50,4 +50,21 @@ public class ConsultationController implements Initializable {
         consultation.setPatient(comboPatient.getSelectionModel().getSelectedItem());
         CabinetService.addConsultation(consultation);
     }
+    public void delConsultation() {
+        Consultation consultation = tableConsultation.getSelectionModel().getSelectedItem();
+        if (consultation != null) {
+            CabinetService.deleteConsultation(consultation);
+            consultations.remove(consultation);
+            loadConsultation();
+        } else {
+            System.out.println("No consultation selected!");
+        }
+        
+    }
+
+    private void loadConsultation() {
+        consultations.setAll(CabinetService.getAllConsultations());
+
+
+    }
 }
