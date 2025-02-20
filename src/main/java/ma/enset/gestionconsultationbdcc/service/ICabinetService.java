@@ -13,6 +13,7 @@ public interface ICabinetService {
     List<Patient> getALLPatients();
     Patient getPatientById(Long id);
     List <Patient>searchPatientsByQuery(String query) throws SQLException;
+    List <Consultation>searchConsultationsByQuery(String query) throws SQLException;
     void addConsultation(Consultation consultation);
     void deleteConsultation(Consultation consultation);
     void updateConsultation(Consultation consultation);

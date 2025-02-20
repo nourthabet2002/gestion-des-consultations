@@ -76,6 +76,11 @@ public class CabinetService implements ICabinetService {
     }
 
     @Override
+    public List<Consultation> searchConsultationsByQuery(String query) throws SQLException {
+        return consultationDao.searchByQuery(query);
+    }
+
+    @Override
     public void addConsultation(Consultation consultation) {
         try {
             consultationDao.create(consultation);
@@ -96,7 +101,11 @@ public class CabinetService implements ICabinetService {
 
     @Override
     public void updateConsultation(Consultation consultation) {
-
+        try {
+            consultationDao.update(consultation);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

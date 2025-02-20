@@ -7,13 +7,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.gestionconsultationbdcc.controllers.ConsultationController">
    <top>
@@ -41,8 +41,10 @@
             </GridPane>
             <HBox prefHeight="63.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" text="Ajouter"  onAction="#addConsultation"/>
-                  <Button mnemonicParsing="false" text="Supprimer"  onAction="#delConsultation"/>
+                  <Button mnemonicParsing="false" onAction="#addConsultation" text="Ajouter" />
+                  <Button mnemonicParsing="false" onAction="#delConsultation" text="Supprimer" />
+                  <Button fx:id="updateconsultation" mnemonicParsing="false" onAction="#updateConsultation" text="Modifier" />
+                  <TextField fx:id="search" />
                </children>
             </HBox>
          </children>

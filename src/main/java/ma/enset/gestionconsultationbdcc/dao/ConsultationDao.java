@@ -31,6 +31,14 @@ public class ConsultationDao implements IConsultationDao {
 
     @Override
     public void update(Consultation consultation) throws SQLException {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement pstm = connection.prepareStatement(
+                "UPDATE CONSULTATIONS SET DATE_CONSULTATION=?, DESCRIPITION=?, ID_PATIENT=? WHERE ID_CONSULTATION=?");
+        pstm.setDate(1, consultation.getDateConsultation());
+        pstm.setString(2, consultation.getDescription());
+        pstm.setLong(3, consultation.getPatient().getId());
+        pstm.setLong(4, consultation.getId());
+        pstm.executeUpdate();
 
     }
 
@@ -70,4 +78,27 @@ public class ConsultationDao implements IConsultationDao {
     }
 
 
-}
+    @Override
+    public List<Consultation> searchByQuery(String query) throws SQLException {
+        Connection connection=DBConnection.getConnection();
+        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM CONSULTATIONS WHERE DATE_CONSULTATION LIKE ? OR DESCRIPITION LIKE ?");
+        pstm.setString(1,"%"+query+"%");
+        pstm.setString(2,"%"+query+"%");
+        ResultSet rs= pstm.executeQuery();
+        List<Consultation> consultations=new ArrayList<>();
+        PatientDao patientDao = new PatientDao();
+        while(rs.next()){
+            Consultation consultation=new Consultation();
+            consultation.setId(rs.getLong("ID_CONSULTATION"));
+            consultation.setDateConsultation(rs.getDate("DATE_CONSULTATION"));
+            consultation.setDescription(rs.getString("DESCRIPITION"));
+            long patientId = rs.getLong("ID_PATIENT");
+            Patient patient = patientDao.findById(patientId);
+            consultation.setPatient(patient);
+            consultations.add(consultation);
+
+        }
+        return consultations;
+    }
+    }
+
