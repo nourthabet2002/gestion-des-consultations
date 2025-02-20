@@ -27,7 +27,7 @@ public class ConsultationController implements Initializable {
     @FXML private TableColumn<Consultation,Long> columnId;
     @FXML private TableColumn<Consultation,Date> columnDateConsultation;
     @FXML private TableColumn<Consultation,String> columnDescripition;
-    private Consultation selectedConsultation;
+    private Consultation selectedConsultation ;
     @FXML private TableColumn<Consultation,Patient> comumnPatient;
 
     private ICabinetService CabinetService;
@@ -47,7 +47,7 @@ public class ConsultationController implements Initializable {
         patients.setAll(CabinetService.getALLPatients());
         tableConsultation.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, oldConsultation, newConsultation) -> {
-                    if(newConsultation != null) {
+                    if(newConsultation!= null) {
                         // Update your input fields with the selected consultation's data
                         dateConsultation.setValue(newConsultation.getDateConsultation().toLocalDate());
                         textFieldDescripition.setText(newConsultation.getDescription());
@@ -94,7 +94,7 @@ public class ConsultationController implements Initializable {
             return;
         }
         selectedConsultation.setDateConsultation(Date.valueOf(dateConsultation.getValue()));
-        selectedConsultation.setDescription(columnDescripition.getText());
+        selectedConsultation.setDescription(textFieldDescripition.getText());
         selectedConsultation.setPatient(comboPatient.getSelectionModel().getSelectedItem());
         CabinetService.updateConsultation(selectedConsultation);
         loadConsultation();
