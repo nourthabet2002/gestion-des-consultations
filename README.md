@@ -13,6 +13,8 @@ Une application JavaFX pour la gestion des consultations médicales, utilisant *
 - **SQL** 🗄️ – Base de données  
 - **Maven** ⚡ – Gestion des dépendances  
 - **JDBC** 🔗 – Connexion à la base de données  
+## 🖼️ Aperçu de l'application  
+![Interface de l'application](screenshots/interface.png)
 
 ## 🚀 Installation & Exécution  
 1. **Cloner le projet**  
